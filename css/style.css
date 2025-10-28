@@ -513,5 +513,6 @@ header.main-header {
 }
 
 .hero-cta-btn:hover {
-    background-color: var(--color-secondary-brown);
+    background-color: white;
+	color: var(--color-primary-orange);
 }
