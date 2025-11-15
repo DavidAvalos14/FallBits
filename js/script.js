@@ -97,4 +97,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- INICIO: LÓGICA DEL MENÚ MÓVIL (AÑADE ESTO) ---
+    const toggleButton = document.querySelector('.mobile-nav-toggle');
+    const mainHeader = document.querySelector('.main-header');
+    
+    if (toggleButton && mainHeader) {
+        toggleButton.addEventListener('click', () => {
+            // Alterna la clase 'nav-open' en el <header>
+            mainHeader.classList.toggle('nav-open');
+            
+            // Actualiza el atributo aria-expanded para accesibilidad
+            const isExpanded = mainHeader.classList.contains('nav-open');
+            toggleButton.setAttribute('aria-expanded', isExpanded);
+        });
+    }
+    
+    // Opcional: Cierra el menú al hacer clic en un enlace
+    const navLinks = document.querySelectorAll('.main-nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Solo si el menú está abierto
+            if (mainHeader.classList.contains('nav-open')) {
+                mainHeader.classList.remove('nav-open');
+                toggleButton.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+    // --- FIN: LÓGICA DEL MENÚ MÓVIL ---
+
 }); 

@@ -20,8 +20,7 @@
 
     <header class="main-header">
         <div class="logo-container"> <img src="imagenes/logo.jpg" alt="Logo FallBits" class="logo-img">
-			<!--<span class="company-name"></span>Sin nombre-->
-		</div>
+            <span class="company-name">FallBits</span> </div>
 
         <nav class="main-nav">
             <ul>
@@ -33,15 +32,20 @@
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
+
+        <button class="mobile-nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
     </header>
 
     <section class="hero-section">
         <div class="video-background">
             <div class="video-overlay"></div>
-            <!--video playsinline autoplay muted loop>
-                <source src="./videos/fondoR.mp4" type="video/mp4">
-            </!--video-->
-            <video src="https://davidavalos14.github.io/FallBits/videos/fondoR.mp4" autoplay muted loop></video>
+            <video playsinline autoplay muted loop>
+                <source src="videos/fondoR.mp4" type="video/mp4">
+            </video>
         </div>
 
         <div class="hero-content">
@@ -152,29 +156,15 @@
                 </p>
             </div>
             </section>
+
         <section id="contacto" class="fade-in-section">
             <h2>Contáctanos</h2>
             <p>¿Tienes una idea o un proyecto en mente? Nos encantaría ayudarte a hacerlo realidad.</p>
+            <p>Envíanos un correo directamente a:</p>
             
-            <form class="contact-form" action="URL_A_TU_BACKEND_O_SERVICIO_DE_EMAIL" method="POST">
-                <div class="form-group">
-                    <label for="name">Nombre:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo Electrónico:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Asunto:</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensaje:</label>
-                    <textarea id="message" name="message" rows="6" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Enviar Mensaje</button>
-            </form>
+            <a href="mailto:fallbitsempresa@gmail.com" class="contact-email-btn">
+                fallbitsempresa@gmail.com
+            </a>
         </section>
         <footer class="fade-in-section">
             <p>&copy; 2025 FallBits. Todos los derechos reservados.</p>

@@ -18,7 +18,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     font-family: var(--font-body);
     line-height: 1.7;
     margin: 0;
@@ -142,6 +142,11 @@ h2 {
     padding-bottom: 12px;
     font-size: 2em; /* Más grande */
     font-weight: 600;
+}
+
+#mision p,
+#vision p {
+    text-align: justify;
 }
 
 section {
@@ -459,7 +464,7 @@ header.main-header {
     /* Esconde el nav de escritorio */
     .main-nav {
         display: none; 
-        /* (Para un menú de hamburguesa necesitarías más JS y HTML) */
+        
     }
 
     header.main-header {
@@ -513,6 +518,230 @@ header.main-header {
 }
 
 .hero-cta-btn:hover {
-    background-color: white;
-	color: var(--color-primary-orange);
+    background-color: var(--color-secondary-brown);
+}
+
+/* --- Estilos del Botón de Menú Móvil --- */
+.mobile-nav-toggle {
+    display: none; /* Oculto en desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Encima de todo */
+    position: relative; /* Para animar las líneas */
+    width: 45px;
+    height: 45px;
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-dark);
+    margin: 5px auto; /* Centrado */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* --- INICIO: DISEÑO RESPONSIVO --- */
+
+/* Ajustes base para responsiveness */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Imágenes y videos fluidos */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- Pantallas Medianas (Tablets) --- */
+@media (max-width: 992px) {
+    /* 2 columnas para servicios */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Ajuste del slider para que tu JS muestre 2 */
+    .team-member {
+        width: calc(100% / 2 - 20px);
+    }
+
+    /* Reduce un poco el texto del hero */
+    .hero-content h1 {
+        font-size: 2.8em;
+    }
+
+    .hero-content p {
+        font-size: 1.1em;
+    }
+}
+
+
+/* --- Pantallas Pequeñas (Móviles) --- */
+@media (max-width: 768px) {
+    
+    /* --- Header y Navegación Móvil --- */
+
+    /* MUESTRA EL BOTÓN DE HAMBURGUESA */
+    .mobile-nav-toggle {
+        display: block; 
+    }
+
+    /* MODIFICA ESTA REGLA */
+    header.main-header {
+        justify-content: space-between; /* Logo a la izq, botón a la der */
+        padding: 0 5%; /* Ajusta el padding */
+    }
+
+    /* REEMPLAZA TU REGLA .main-nav { display: none; } CON ESTO */
+    .main-nav {
+        /* Oculto por defecto */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+
+        /* Estilo de superposición (overlay) */
+        position: fixed; 
+        top: var(--header-height); /* Debajo del header */
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: rgba(255, 255, 255, 0.98); /* Fondo blanco casi sólido */
+        backdrop-filter: blur(5px); /* Efecto blur (opcional) */
+
+        /* Centrar los enlaces */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Apila los enlaces */
+        align-items: center;
+        gap: 25px; /* Espacio entre enlaces */
+    }
+
+    .main-nav a {
+        font-size: 1.6rem; /* Enlaces más grandes para móvil */
+        color: var(--color-text-dark);
+        font-weight: 700;
+    }
+    
+    /* AÑADE ESTOS ESTADOS DE MENÚ ABIERTO (controlado por JS) */
+    /* Esta clase se añadirá al <header> */
+    .nav-open .main-nav {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Animación del botón de hamburguesa a "X" */
+    .nav-open .mobile-nav-toggle .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .nav-open .mobile-nav-toggle .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-open .mobile-nav-toggle .hamburger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Corrige el padding superior del body en móvil */
+    body {
+        padding-top: var(--header-height); 
+    }
+
+    /* --- Hero Section --- */
+    /* NO ocultamos el video, como pediste. */
+    /* El video seguirá viéndose */
+
+    .hero-section {
+        height: 70vh; /* Reduce un poco la altura en móvil */
+    }
+
+    /* Ajusta el texto del Hero para que quepa */
+    .hero-content h1 {
+        font-size: 2.2rem; /* Reduce el título */
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 1rem; /* Reduce el párrafo */
+    }
+
+    .hero-cta-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* --- Contenido Principal --- */
+    .container {
+        width: 95%; /* Usa más ancho de pantalla */
+        padding: 25px; /* Reduce el padding */
+    }
+
+    /* Ajuste para fondos de sección alternos */
+    .section-alt-bg {
+        margin-left: -25px;
+        margin-right: -25px;
+        padding: 30px 25px;
+    }
+
+    h2 {
+        font-size: 1.8rem; /* Títulos de sección más pequeños */
+    }
+
+    /* --- Servicios --- */
+    .services-grid {
+        grid-template-columns: 1fr; /* 1 columna */
+    }
+    
+    /* --- Slider de Equipo --- */
+    /* Ajusta el slider para que tu JS muestre 1 */
+    .team-member {
+        width: calc(100% - 20px); /* 1 miembro a la vez */
+    }
+
+    .slider-btn {
+        width: 45px;
+        height: 45px;
+    }
+    .slider-btn.prev-btn { left: -10px; }
+    .slider-btn.next-btn { right: -10px; }
+
+    /* --- Formulario de Contacto --- */
+    .form-group input,
+    .form-group textarea,
+    .submit-btn {
+        width: 100%; /* Ancho completo */
+    }
+}
+/* --- FIN: DISEÑO RESPONSIVO --- */
+
+/* Estilo para el nuevo botón de correo */
+.contact-email-btn {
+    display: inline-block;
+    background-color: var(--color-primary-orange);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none; /* Quita el subrayado del enlace */
+    margin-top: 20px; /* Añade un poco de espacio arriba */
+}
+
+.contact-email-btn:hover {
+    background-color: var(--color-secondary-brown);
+    transform: translateY(-2px);
+    color: white; /* Asegura que el texto siga blanco */
 }
