@@ -519,6 +519,7 @@ header.main-header {
 
 .hero-cta-btn:hover {
     background-color: var(--color-secondary-brown);
+    color: white;
 }
 
 /* --- Estilos del Botón de Menú Móvil --- */
